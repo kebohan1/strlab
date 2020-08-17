@@ -10,7 +10,7 @@
           <li class="@yield('navbar.active.index')"><a href="{{ route('index') }}">首頁</a></li>
           <li class="@yield('navbar.active.teacher')"><a href="{{ route('index.teacher') }}">老師介紹</a></li>
           <li class="@yield('navbar.active.research_area')"><a href="research_area.html">研究方向</a></li>
-          <li class="@yield('navbar.active.equipment')"><a href="trainers.html">儀器介紹</a></li>
+          <li class="@yield('navbar.active.equipment')"><a href="{{ route('index.equipment') }}">儀器介紹</a></li>
           <li class="drop-down"><a href="">組織成員</a>
             <ul>
               <li class="@yield('navbar.active.now_member')"><a href="#">目前成員</a></li>
