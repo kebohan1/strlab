@@ -1,0 +1,5 @@
+研究方向: 
+1.不同固含量對於聚亞醯胺光操控電阻式記憶體特性之影響(Impact of different soild content on Polyimide-based photo-operation Resistive Random Access Memories)
+2.利用不同摩擦配向的旋轉速度改善聚亞醯胺電阻式記憶體特性(Improving Characteristics of PI-based Resistive Random Memory by Different Rotating Speed of Rubbing)
+3.不同分子重量對於聚亞醯胺電阻式記憶體特性之分析(Analysis of Difference Molecular Weight on Polyimide-Based Resistive Random Access Memories)
+4.摩擦配向技術對於聚亞醯胺電阻式記憶體特性之影響(Impact of Rubbing Technique on Polyimide-based Resistive Random Access Memories)
