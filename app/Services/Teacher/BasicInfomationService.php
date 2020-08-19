@@ -3,6 +3,8 @@
 namespace App\Services\Teacher;
 
 use App\Repositories\TeacherBasicInfomationRepository;
+use App\Repositories\TeacherSkillRepository;
+use App\Repositories\TeacherEducationRepository;
 
 class BasicInfomationService {
 
@@ -27,4 +29,31 @@ class BasicInfomationService {
             $tBIRepo->create($item['type'],$item['value']);
         }
     }
+
+    public function updateSkill($skills){
+        $tSkillRepo = new TeacherSkillRepository;
+        
+        //Initial Skill
+        $tSkillRepo->cleanTable();
+
+        //Update Now Skill
+        foreach($skills as $skill){
+            $tSkillRepo->create($skill['content']);
+        }
+        return response(200);
+    }
+
+    public function updateEducation($educations){
+        $tEduRepo = new TeacherEducationRepository;
+
+        //Initial Education
+        $tEduRepo->cleanTable();
+
+        //Update Now Education
+        foreach($educations as $education){
+            $tEduRepo->create($education['university'],$education['department'],$education['degree']);
+        }
+        return response(200);
+    }
+
 }

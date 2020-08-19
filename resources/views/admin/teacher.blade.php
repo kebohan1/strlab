@@ -82,12 +82,12 @@
                         <div class="col-md-9">
                             <div class="input-group">
 
-                                <input class="form-control" type="text" placeholder="" >
+                                <input class="form-control" type="text" placeholder="" value="{{ $basicinfo->where('type','=','office')->first()->value }}" id="teacher_office">
                             </div>
                             
                         </div>
                         <div class="col-md-3">
-                            <button class="btn btn-outline-primary ">更新</button>
+                            <button class="btn btn-outline-primary " id="teacher_office_btn">更新</button>
                         </div>
                     </div>
 
@@ -99,19 +99,19 @@
                         <div class="col-md-9">
                             <div class="input-group">
 
-                                <input class="form-control" type="text" placeholder="" >
+                                <input class="form-control" type="text" placeholder="" value="{{ $basicinfo->where('type','=','email')->first()->value }}" id="teacher_email">
                             </div>
                             
                         </div>
                         <div class="col-md-3">
-                            <button class="btn btn-outline-primary ">更新</button>
+                            <button class="btn btn-outline-primary " id="teacher_email_btn">更新</button>
                         </div>
                     </div>
 
                     <hr>
                     
                     <strong><i class="fas fa-pencil-alt mr-1"></i> 專長</strong> &nbsp;&nbsp;
-                    <button class="btn btn-outline-primary btn-sm">新增專長</button>
+                    <button class="btn btn-outline-primary btn-sm" id="add_teacher_skill_item_btn">新增專長</button>
                     <button class="btn btn-outline-success btn-sm">更新</button>
 
                     <div class="row"  style="margin-top: 0.5em;">
@@ -119,11 +119,13 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>專長內容</th>
                                         <th>操作</th>
                                     </tr>
                                 </thead>
+                                <tbody id="table_teacher_skill">
+
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -131,7 +133,7 @@
 
                     <hr>
                     <strong><i class="fas fa-book mr-1"></i> 學歷</strong> &nbsp;&nbsp;
-                    <button class="btn btn-outline-primary btn-sm">新增學歷</button>
+                    <button class="btn btn-outline-primary btn-sm" id="add_teacher_education_item_btn">新增學歷</button>
                     <button class="btn btn-outline-success btn-sm">更新</button>
 
                     <div class="row"  style="margin-top: 0.5em;">
@@ -139,11 +141,15 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>專長內容</th>
-                                        <th>操作</th>
+                                        <th>學校</th>
+                                        <th>系所</th>
+                                        <th>學位</th>
+                                        <th>刪除</th>
                                     </tr>
                                 </thead>
+                                <tbody id="table_teacher_education">
+
+                                </tbody>
                             </table>
                         </div>
                     </div>

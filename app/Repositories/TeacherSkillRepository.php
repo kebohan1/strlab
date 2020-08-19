@@ -20,4 +20,8 @@ class TeacherSkillRepository {
         ]);
     }
 
+    public function cleanTable(){
+        TeacherSkill::truncate();
+    }
+
 }

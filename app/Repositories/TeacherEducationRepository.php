@@ -19,9 +19,11 @@ class TeacherEducationRepository {
         TeacherEducation::where('id','=',$id)->update([
             'university'=>$university,
             'department'=>$department,
-            'degree'=>$degree,
-            'order'=>$order
+            'degree'=>$degree
         ]);
     }
 
+    public function cleanTable(){
+        TeacherEducation::truncate();
+    }
 }
