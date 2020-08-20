@@ -10,7 +10,7 @@ class TeacherController extends Controller
     //
     public function index(){
         $basicInfoService = new BasicInfomationService;
-        return view('teacher',['basicinfo'=>$basicInfoService->read()]);
+        return view('teacher',$basicInfoService->read());
     }
 
     

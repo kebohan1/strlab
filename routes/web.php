@@ -25,6 +25,8 @@ Route::middleware('throttle:30,1')->group(function () {
         Route::get('/', 'Admin\AdminDashBoardController@index')->name('admin.dashboard');
         Route::get('/teacher', 'Admin\TeacherController@index')->name('admin.teacher');
         Route::post('/teacher/updatephone', 'Admin\TeacherController@updatePhone')->name('admin.teacher.updatephone');
+        Route::post('/teacher/updateskills','Admin\TeacherController@updateSkill')->name('admin.teacher.updateskills');
+        Route::post('/teacher/updateeducations','Admin\TeacherController@updateEducation')->name('admin.teacher.updateeducations');
     });
     Route::get('/logout', 'Auth\LoginController@logout');
 });

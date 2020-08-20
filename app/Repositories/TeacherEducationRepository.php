@@ -7,7 +7,8 @@ class TeacherEducationRepository {
         TeacherEducation::create([
             'university'=>$university,
             'department'=>$department,
-            'degree'=>$degree
+            'degree'=>$degree,
+            'order'=>'0'
         ]);
     }
 

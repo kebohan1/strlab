@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Services\Teacher\BasicInfomationService;
-
+use App\Entities\TeacherEducation;
 
 class BasicInfomationSeeder extends Seeder
 {
@@ -13,7 +13,7 @@ class BasicInfomationSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
         $teacherBasicInfomationInit = collect();
         $teacherBasicInfomationInit->push([
             'type'=>'phone',
@@ -31,6 +31,10 @@ class BasicInfomationSeeder extends Seeder
         $basicInfoService = new BasicInfomationService;
 
         $basicInfoService->create($teacherBasicInfomationInit);
-
+        // TeacherEducation::create([
+        //     'university'=>'國立交通大學',
+        //     'department'=>'電子研究所',
+        //     'degree'=>'博士'
+        // ]);
     }
 }

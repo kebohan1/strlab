@@ -5,6 +5,7 @@ namespace App\Services\Teacher;
 use App\Repositories\TeacherBasicInfomationRepository;
 use App\Repositories\TeacherSkillRepository;
 use App\Repositories\TeacherEducationRepository;
+use Exception;
 
 class BasicInfomationService {
 
@@ -19,7 +20,16 @@ class BasicInfomationService {
 
     public function read(){
         $tBIRepo = new TeacherBasicInfomationRepository;
-        return $tBIRepo->read();
+        $tSkillRepo = new TeacherSkillRepository;
+        $tEduRepo = new TeacherEducationRepository;
+
+        $result = [
+            'basic_info'=>$tBIRepo->read(),
+            'skill'=>$tSkillRepo->read(),
+            'educations'=>$tEduRepo->read()
+        ];
+
+        return $result;
     }
 
     public function create($list){
@@ -38,9 +48,20 @@ class BasicInfomationService {
 
         //Update Now Skill
         foreach($skills as $skill){
-            $tSkillRepo->create($skill['content']);
+            try{
+                $tSkillRepo->create($skill['skill']);
+            } catch(Exception $e){
+                return [
+                    'message'=>$e->getMessage(),
+                    'code'=>400
+                ];
+            }
+            
         }
-        return response(200);
+        return [
+            'message'=>'Complete',
+            'code'=>200
+        ] ;
     }
 
     public function updateEducation($educations){
@@ -51,9 +72,20 @@ class BasicInfomationService {
 
         //Update Now Education
         foreach($educations as $education){
-            $tEduRepo->create($education['university'],$education['department'],$education['degree']);
+            try{
+                $tEduRepo->create($education['university'],$education['department'],$education['degree']);
+            } catch(Exception $e) {
+                return [
+                    'message'=>$e->getMessage(),
+                    'code'=>400
+                ];
+            }
+            
         }
-        return response(200);
+        return [
+            'message'=>'Complete',
+            'code'=>200
+        ] ;
     }
 
 }

@@ -24,9 +24,9 @@
                 逢甲大學電子工程學系 特聘教授
               </p>
               <ul>
-                <li><i class="icofont-phone"></i> 校內分機: #{{ $basicinfo->where('type','=','phone')->first()->value }}</li>
-                <li><i class="icofont-ui-email"></i> Email: {{ $basicinfo->where('type','=','email')->first()->value }}</li>
-                <li><i class="icofont-building-alt"></i> 辦公室: {{ $basicinfo->where('type','=','office')->first()->value }}</li>
+                <li><i class="icofont-phone"></i> 校內分機: #{{ $basic_info->where('type','=','phone')->first()->value }}</li>
+                <li><i class="icofont-ui-email"></i> Email: {{ $basic_info->where('type','=','email')->first()->value }}</li>
+                <li><i class="icofont-building-alt"></i> 辦公室: {{ $basic_info->where('type','=','office')->first()->value }}</li>
               </ul>
               <p>
                 <b>專長</b>

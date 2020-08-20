@@ -2,7 +2,7 @@
 @section('admin.active.teacher','active')
 @section('title-name','老師介紹')
 @section('content')
-
+@inject('TeacherPresenter','App\Presenters\Admin\TeacherPresenter')
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -66,7 +66,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">#</span>
                                 </div>
-                                <input class="form-control" type="text" placeholder="" id="teacher_phone" value="{{ $basicinfo->where('type','=','phone')->first()->value }}">
+                                <input class="form-control" type="text" placeholder="" id="teacher_phone" value="{{ $basic_info->where('type','=','phone')->first()->value }}">
                             </div>
                             
                         </div>
@@ -82,7 +82,7 @@
                         <div class="col-md-9">
                             <div class="input-group">
 
-                                <input class="form-control" type="text" placeholder="" value="{{ $basicinfo->where('type','=','office')->first()->value }}" id="teacher_office">
+                                <input class="form-control" type="text" placeholder="" value="{{ $basic_info->where('type','=','office')->first()->value }}" id="teacher_office">
                             </div>
                             
                         </div>
@@ -99,7 +99,7 @@
                         <div class="col-md-9">
                             <div class="input-group">
 
-                                <input class="form-control" type="text" placeholder="" value="{{ $basicinfo->where('type','=','email')->first()->value }}" id="teacher_email">
+                                <input class="form-control" type="text" placeholder="" value="{{ $basic_info->where('type','=','email')->first()->value }}" id="teacher_email">
                             </div>
                             
                         </div>
@@ -112,19 +112,19 @@
                     
                     <strong><i class="fas fa-pencil-alt mr-1"></i> 專長</strong> &nbsp;&nbsp;
                     <button class="btn btn-outline-primary btn-sm" id="add_teacher_skill_item_btn">新增專長</button>
-                    <button class="btn btn-outline-success btn-sm">更新</button>
+                    <button class="btn btn-outline-success btn-sm" id="update_teacher_skill_btn">更新</button>
 
                     <div class="row"  style="margin-top: 0.5em;">
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>專長內容</th>
-                                        <th>操作</th>
+                                        <th width="10%">操作</th>
                                     </tr>
                                 </thead>
                                 <tbody id="table_teacher_skill">
-
+                                    {!! $TeacherPresenter->setSkill($skill) !!}
                                 </tbody>
                             </table>
                         </div>
@@ -134,10 +134,10 @@
                     <hr>
                     <strong><i class="fas fa-book mr-1"></i> 學歷</strong> &nbsp;&nbsp;
                     <button class="btn btn-outline-primary btn-sm" id="add_teacher_education_item_btn">新增學歷</button>
-                    <button class="btn btn-outline-success btn-sm">更新</button>
+                    <button class="btn btn-outline-success btn-sm" id="update_teacher_education_btn">更新</button>
 
                     <div class="row"  style="margin-top: 0.5em;">
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -148,7 +148,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="table_teacher_education">
-
+                                    {!! $TeacherPresenter->setEducation($educations) !!}
                                 </tbody>
                             </table>
                         </div>

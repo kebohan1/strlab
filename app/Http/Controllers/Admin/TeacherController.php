@@ -11,7 +11,8 @@ class TeacherController extends Controller
     //
     public function index(){
         $basicInfomationService = new BasicInfomationService;
-        return view('admin.teacher',['basicinfo'=>$basicInfomationService->read()]);
+
+        return view('admin.teacher',$basicInfomationService->read());
     }
     public function updatePhone(Request $request){
         $basicInfoService = new BasicInfomationService;
@@ -48,23 +49,25 @@ class TeacherController extends Controller
 
     public function updateSkill(Request $request){
         $basicInfoService = new BasicInfomationService;
+        // // return $request->skills[0]['skill'];
         if(!$request->has('skills')){
             return response(403);
         }
 
-        $basicInfoService->updateSkill($request->skills);
-
-        return response(200);
+        $feedback = $basicInfoService->updateSkill($request->skills);
+        // return response()->json($feedback['code']);
+        return response()->json($feedback);
     }
 
     public function updateEducation(Request $request){
         $basicInfoService = new BasicInfomationService;
-        if(!$request->has('education')){
+        if(!$request->has('educations')){
             return response(403);
         }
+        // return $request->educations;
+        $feedback = $basicInfoService->updateEducation($request->educations);
 
-        $basicInfoService->updateSkill($request->education);
+        return response()->json($feedback);
 
-        return response(200);
     }
 }
