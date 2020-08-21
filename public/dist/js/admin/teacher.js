@@ -21,7 +21,7 @@ $(document).ready(function () {
     })
     $('#teacher_office_btn').click(function () {
         $.ajax({
-            url: '/admin/teacher/updatephone',
+            url: '/admin/teacher/updateoffice',
             type: 'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -41,7 +41,7 @@ $(document).ready(function () {
     })
     $('#teacher_email_btn').click(function () {
         $.ajax({
-            url: '/admin/teacher/updatephone',
+            url: '/admin/teacher/updateemail',
             type: 'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -128,7 +128,7 @@ $(document).ready(function () {
             })
         });
 
-        console.log(educations_array)
+        // console.log(educations_array)
         $.ajax({
             url: '/admin/teacher/updateeducations',
             type: 'POST',
