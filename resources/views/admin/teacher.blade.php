@@ -163,8 +163,8 @@
         <div class="col-md-12">
             <div class="card card-primary collapsed-card">
                 <div class="card-header">
-                    <h3 class="card-title">計數器</h3>
-
+                    <h3 class="card-title">計數器 <span class="badge badge-pill badge-warning">{{ $counter->count() }}</span></h3>
+                    
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                             title="Collapse">
@@ -176,7 +176,7 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#modal-counter">新增計數器</button><br>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" style="margin-top: 0.7em;">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -186,7 +186,7 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            {!! $TeacherPresenter->setCounter($counter) !!}
                         </tbody>
                     </table>
                 </div>
@@ -201,7 +201,7 @@
         <div class="col-md-12">
             <div class="card card-primary collapsed-card">
                 <div class="card-header">
-                    <h3 class="card-title">經歷</h3>
+                    <h3 class="card-title">經歷 <span class="badge badge-pill badge-warning">{{ $experiences->count() }}</span></h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -214,7 +214,7 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#modal-experience-create">新增經歷</button><br>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" style="margin-top: 0.7em;">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -224,7 +224,7 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            {!! $TeacherPresenter->setExperience($experiences) !!}
                         </tbody>
                     </table>
                 </div>
@@ -252,7 +252,7 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#modal-experience-create">新增期刊論文</button><br>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" style="margin-top: 0.7em;"> 
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -291,7 +291,7 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#modal-experience-create">新增科技部計畫</button><br>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" style="margin-top: 0.7em;">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -332,7 +332,7 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#modal-experience-create">新增期刊論文</button><br>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" style="margin-top: 0.7em;">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -372,7 +372,7 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#modal-experience-create">新增期刊論文</button><br>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" style="margin-top: 0.7em;">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -397,7 +397,7 @@
 
     <div class="modal fade" id="modal-counter">
         <div class="modal-dialog">
-            <form action="">
+            <form action="/admin/teacher/createcounter" method="POST">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
@@ -409,12 +409,12 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="mobile" placeholder="計數名稱">
+                                <input type="text" class="form-control" name="name" placeholder="計數名稱">
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="mobile" placeholder="計數數量">
+                                <input type="number" class="form-control" name="count" placeholder="計數數量">
                             </div>
                         </div>
                     </div>
@@ -431,7 +431,7 @@
     <!-- /.modal -->
     <div class="modal fade" id="modal-experience-create">
         <div class="modal-dialog">
-            <form action="">
+            <form action="/admin/teacher/createexperience" method="POST">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
@@ -443,12 +443,12 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="mobile" placeholder="服務系所">
+                                <input type="text" class="form-control" name="department" placeholder="服務系所">
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="mobile" placeholder="職稱">
+                                <input type="text" class="form-control" name="job" placeholder="職稱">
                             </div>
                         </div>
                     </div>
@@ -504,4 +504,17 @@
 
 @section('custom_js')
 <script src="{{ asset('dist/js/admin/teacher.js') }}"></script>
+@if(session('success'))
+<script>
+    alert('成功');
+
+    
+</script>
+@endif
+
+@if(session('error'))
+<script>
+    alert('{{ session('error') }}');
+</script>
+@endif
 @endsection

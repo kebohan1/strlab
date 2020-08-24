@@ -70,4 +70,36 @@ class TeacherController extends Controller
         return response()->json($feedback);
 
     }
+
+    public function createExperience(Request $request){
+        $basicInfoService = new BasicInfomationService;
+        if(!(($request->has('department')&&$request->has('job')))){
+            return back()->with('error','No Infomation');
+        }
+
+        $result = $basicInfoService->createExperience($request->department,$request->job);
+
+        if($result['code']==400){
+            return back()->with('error',$result['message']);
+        } else {
+            return back()->with('success');
+        }
+
+
+    }
+
+    public function createCounter(Request $request){
+        $basicInfoService = new BasicInfomationService;
+        if(!(($request->has('name')&&$request->has('count')))){
+            return back()->with('error','No Infomation');
+        }
+
+        $result = $basicInfoService->createCounter($request->name,$request->count);
+
+        if($result['code']==400){
+            return back()->with('error',$result['message']);
+        } else {
+            return back()->with('success');
+        }
+    }
 }

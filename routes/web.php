@@ -18,11 +18,10 @@ Route::middleware('throttle:30,1')->group(function () {
     Route::get('/teacher', 'TeacherController@index')->name('index.teacher');
     Auth::routes(['register' => 'false']);
 
-    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/equipment', 'EquipmentController@index')->name('index.equipment');
 
     Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-        Route::get('/', 'Admin\AdminDashBoardController@index')->name('admin.dashboard');
+        Route::get('/', 'Admin\AdminDashboardController@index')->name('admin.dashboard');
         
         Route::group(['prefix' => 'teacher'], function () {
             Route::get('/', 'Admin\TeacherController@index')->name('admin.teacher');
@@ -32,6 +31,8 @@ Route::middleware('throttle:30,1')->group(function () {
 
             Route::post('/updateskills', 'Admin\TeacherController@updateSkill')->name('admin.teacher.updateskills');
             Route::post('/updateeducations', 'Admin\TeacherController@updateEducation')->name('admin.teacher.updateeducations');
+            Route::post('/createexperience','Admin\TeacherController@createExperience');
+            Route::post('/createcounter','Admin\TeacherController@createCounter');
         });
     });
     Route::get('/logout', 'Auth\LoginController@logout');

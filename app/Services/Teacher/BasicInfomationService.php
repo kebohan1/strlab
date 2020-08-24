@@ -3,8 +3,10 @@
 namespace App\Services\Teacher;
 
 use App\Repositories\TeacherBasicInfomationRepository;
+use App\Repositories\TeacherCounterRepository;
 use App\Repositories\TeacherSkillRepository;
 use App\Repositories\TeacherEducationRepository;
+use App\Repositories\TeacherExperienceRepository;
 use Exception;
 
 class BasicInfomationService {
@@ -22,11 +24,15 @@ class BasicInfomationService {
         $tBIRepo = new TeacherBasicInfomationRepository;
         $tSkillRepo = new TeacherSkillRepository;
         $tEduRepo = new TeacherEducationRepository;
+        $tExpRepo = new TeacherExperienceRepository;
+        $tCountRepo = new TeacherCounterRepository;
 
         $result = [
             'basic_info'=>$tBIRepo->read(),
             'skill'=>$tSkillRepo->read(),
-            'educations'=>$tEduRepo->read()
+            'educations'=>$tEduRepo->read(),
+            'experiences'=>$tExpRepo->read(),
+            'counter'=>$tCountRepo->getAllCounter()
         ];
 
         return $result;
@@ -86,6 +92,55 @@ class BasicInfomationService {
             'message'=>'Complete',
             'code'=>200
         ] ;
+    }
+
+    public function createExperience($department,$job){
+        $tExpRepo = new TeacherExperienceRepository;
+
+        //create one Experience
+        try{
+            $tExpRepo->create($department,$job);
+        } catch (Exception $e){
+            return [
+                'message'=>$e->getMessage(),
+                'code'=>400
+            ];
+        }
+        
+        return [
+            'message'=>'Complete',
+            'code'=>200
+        ];
+    }
+
+    public function modify($id,$department,$job){
+        $tExpRepo = new TeacherExperienceRepository;
+
+        //modify Experience
+        try{
+            $tExpRepo->modify($id,$department,$job,0);
+        } catch(Exception $e){
+            
+        }
+    }
+
+    public function createCounter($name,$count){
+        $tCountRepo = new TeacherCounterRepository;
+
+        //create Counter
+        try{
+            $tCountRepo->createWithoutOrder($name,$count);
+        } catch(Exception $e){
+            return [
+                'message'=>$e->getMessage(),
+                'code'=>400
+            ];
+        }
+
+        return [
+            'message'=>'Complete',
+            'code'=>200
+        ];
     }
 
 }
