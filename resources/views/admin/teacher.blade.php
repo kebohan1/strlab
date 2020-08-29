@@ -251,7 +251,7 @@
                 </div>
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#modal-experience-create">新增期刊論文</button><br>
+                        data-target="#modal-article-create">新增期刊論文</button><br>
                     <table class="table table-bordered" style="margin-top: 0.7em;"> 
                         <thead>
                             <tr>
@@ -463,6 +463,63 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+
+    <!-- create Article -->
+    <!-- 作者 Authors
+         標題 Title
+         出處 Journal
+         發表時間 Time
+         索引 Citation Index -->
+    <div class="modal fade" id="modal-article-create">
+        <div class="modal-dialog">
+            <form action="/admin/teacher/createarticle" method="POST">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">新增期刊論文</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="author" placeholder="作者(們)">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="title" placeholder="標題">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="journal" placeholder="出處">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="time" placeholder="發表時間">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="citation_index" placeholder="索引">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+            </form>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
     <div class="modal fade" id="modal-experience-modify">
         <div class="modal-dialog">
             <form action="">

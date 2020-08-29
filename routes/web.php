@@ -33,6 +33,10 @@ Route::middleware('throttle:30,1')->group(function () {
             Route::post('/updateeducations', 'Admin\TeacherController@updateEducation')->name('admin.teacher.updateeducations');
             Route::post('/createexperience','Admin\TeacherController@createExperience');
             Route::post('/createcounter','Admin\TeacherController@createCounter');
+            Route::post('/createarticle','Admin\TeacherController@createArticle');
+            Route::post('/createspeeding','Admin\TeacherController@createSpeeding');
+            Route::post('/createmost','Admin\TeacherController@createMost');
+            Route::post('/creatpatent','Admin\TeacherController@createPatent');
         });
     });
     Route::get('/logout', 'Auth\LoginController@logout');
