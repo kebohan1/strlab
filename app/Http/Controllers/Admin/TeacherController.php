@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Teacher\BasicInfomationService;
+use App\Services\Teacher\UpdateInfomationService;
 
 class TeacherController extends Controller
 {
@@ -95,6 +96,79 @@ class TeacherController extends Controller
         }
 
         $result = $basicInfoService->createCounter($request->name,$request->count);
+
+        if($result['code']==400){
+            return back()->with('error',$result['message']);
+        } else {
+            return back()->with('success');
+        }
+    }
+
+    //$id,$authors,$title,$journal_or_conference,$time,$citation_index
+    public function updateArticle(Request $request){
+        $updateService = new UpdateInfomationService;
+        if(!(($request->has('id')&&$request->has('authors')&&
+                $request->has('title')&&$request->has('journal_or_conference')&&
+                $request->has('time')&&$request->has('citation_index')))){
+            return back()->with('error','No Infomation');
+        }
+
+        $result = $updateService->updateArticle($request->id,$request->authors,$request->title,
+                    $request->journal_or_conference,$request->time,$request->citation_index);
+
+        if($result['code']==400){
+            return back()->with('error',$result['message']);
+        } else {
+            return back()->with('success');
+        }
+    }
+
+    public function updateSpeeding(Request $request){
+        $updateService = new UpdateInfomationService;
+        if(!(($request->has('id')&&$request->has('authors')&&
+                $request->has('title')&&$request->has('journal_or_conference')&&
+                $request->has('time')&&$request->has('citation_index')))){
+            return back()->with('error','No Infomation');
+        }
+
+        $result = $updateService->updateArticle($request->id,$request->authors,$request->title,
+                    $request->journal_or_conference,$request->time,$request->citation_index);
+
+        if($result['code']==400){
+            return back()->with('error',$result['message']);
+        } else {
+            return back()->with('success');
+        }
+    }
+
+    public function updateMostPorject(Request $request){
+        $updateService = new UpdateInfomationService;
+        if(!(($request->has('id')&&$request->has('name')&&
+                $request->has('project_number')&&$request->has('job')&&
+                $request->has('start_date')&&$request->has('end_date')))){
+            return back()->with('error','No Infomation');
+        }
+
+        $result = $updateService->updateArticle($request->id,$request->name,$request->project_number,
+                    $request->job,$request->start_date,$request->end_date);
+
+        if($result['code']==400){
+            return back()->with('error',$result['message']);
+        } else {
+            return back()->with('success');
+        }
+    }
+
+    public function updatePatent(Request $request){
+        $updateService = new UpdateInfomationService;
+        if(!(($request->has('id')&&$request->has('name')&&
+                $request->has('category')&&$request->has('patent_number')&&
+                $request->has('start_date')&&$request->has('end_date')))){
+            return back()->with('error','No Infomation');
+        }
+
+        $result = $updateService->updatePatent($request->id,$request->name,$request->project_number,
+                    $request->job,$request->start_date,$request->end_date);
 
         if($result['code']==400){
             return back()->with('error',$result['message']);
