@@ -14,11 +14,10 @@ class TeacherExperienceRepository {
         return TeacherExperience::all();
     }
 
-    public function modify($id,$department,$job,$order){
+    public function modify($id,$department,$job){
         TeacherExperience::where('id','=',$id)->update([
             'department'=>$department,
-            'job'=>$job,
-            'order'=>$order
+            'job'=>$job
         ]);
     }
 
