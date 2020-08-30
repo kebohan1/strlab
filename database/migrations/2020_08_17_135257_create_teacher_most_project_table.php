@@ -16,8 +16,8 @@ class CreateTeacherMostProjectTable extends Migration
         Schema::create('teacher_most_project', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->string('start_date');
+            $table->string('end_date');
             $table->string('project_number')->nullable();
             $table->string('job');
             $table->timestamps();

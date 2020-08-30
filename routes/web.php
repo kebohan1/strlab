@@ -34,7 +34,7 @@ Route::middleware('throttle:30,1')->group(function () {
             Route::post('/createexperience','Admin\TeacherController@createExperience');
             Route::post('/createcounter','Admin\TeacherController@createCounter');
             Route::post('/createarticle','Admin\TeacherController@createArticle');
-            Route::post('/createspeeding','Admin\TeacherController@createSpeeding');
+            Route::post('/createproceeding','Admin\TeacherController@createProceeding');
             Route::post('/createmost','Admin\TeacherController@createMost');
             Route::post('/creatpatent','Admin\TeacherController@createPatent');
         });

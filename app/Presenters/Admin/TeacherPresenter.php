@@ -50,4 +50,36 @@ class TeacherPresenter {
         }
         return $str;
     }
+
+    public function setArticle($articles){
+        $str = '';
+        $index = 1;
+        foreach($articles as $article){
+            $str .= '<tr><td>'.$index.'</td><td><input class="form-control article_author" type="text" value="'.$article->authors.'"/></td></td>'
+                    .'<td><input class="form-control article_title" type="text" value="'.$article->title.'"/></td>'
+                    .'<td><input class="form-control article_journal" type="text" value="'.$article->journal_or_conference.'"/></td>'
+                    .'<td><input class="form-control article_time" type="text" value="'.$article->time.'"/></td>'
+                    .'<td><input class="form-control article_citation_index" type="text" value="'.$article->citation_index.'"/></td>'
+                    .'<td><button class="btn btn-success experience_update_btn"><i class="fas fa-sync-alt"></i> 更新</button>  '
+                    .'<button class="btn btn-danger experience_delete_btn"><i class="fas fa-trash"></i> 刪除</button></td></tr>';
+                    
+        }
+        return $str;
+    }
+
+    public function setMostProject($projects){
+        $str = '';
+        $index = 1;
+        foreach($projects as $project){
+            $str .= '<tr><td>'.$index.'</td><td><input class="form-control project_name" type="text" value="'.$project->name.'"/></td></td>'
+                    .'<td><input class="form-control project_start_date" type="text" value="'.$project->start_date.'"/></td>'
+                    .'<td><input class="form-control project_end_date" type="text" value="'.$project->end_date.'"/></td>'
+                    .'<td><input class="form-control project_number" type="text" value="'.$project->project_number.'"/></td>'
+                    .'<td><input class="form-control project_job" type="text" value="'.$project->job.'"/></td>'
+                    .'<td><button class="btn btn-success experience_update_btn"><i class="fas fa-sync-alt"></i> 更新</button>  '
+                    .'<button class="btn btn-danger experience_delete_btn"><i class="fas fa-trash"></i> 刪除</button></td></tr>';
+                    
+        }
+        return $str;
+    }
 }

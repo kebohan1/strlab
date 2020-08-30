@@ -119,13 +119,13 @@ class TeacherController extends Controller
         }
     }
 
-    public function createSpeeding(Request $request){
+    public function createProceeding(Request $request){
         $basicInfoService = new BasicInfomationService;
         if(!(($request->has('author')&&$request->has('title')&&$request->has('journal')&&$request->has('time')&&$request->has('citation_index')))){
             return back()->with('error','No Infomation');
         }
 
-        $result = $basicInfoService->createSpeeding($request->author,$request->title,$request->journal,$request->time,$request->citation_index);
+        $result = $basicInfoService->createProceeding($request->author,$request->title,$request->journal,$request->time,$request->citation_index);
 
 
         if($result['code']==400){

@@ -33,13 +33,18 @@ class BasicInfomationService
         $tEduRepo = new TeacherEducationRepository;
         $tExpRepo = new TeacherExperienceRepository;
         $tCountRepo = new TeacherCounterRepository;
+        $tArticleRepo = new TeacherArticleRepository;
+        $tMostRepo = new TeacherMostProjectRepository;
 
         $result = [
             'basic_info' => $tBIRepo->read(),
             'skill' => $tSkillRepo->read(),
             'educations' => $tEduRepo->read(),
             'experiences' => $tExpRepo->read(),
-            'counter' => $tCountRepo->getAllCounter()
+            'counter' => $tCountRepo->getAllCounter(),
+            'articles' => $tArticleRepo->readArticle(),
+            'most_projects' => $tMostRepo->read(),
+            'proceedings' => $tArticleRepo->readProceeding(),
         ];
 
         return $result;
@@ -173,7 +178,7 @@ class BasicInfomationService
         ];
     }
 
-    public function createSpeeding($author, $title, $journal, $time, $citation_index)
+    public function createProceeding($author, $title, $journal, $time, $citation_index)
     {
         $tArticleRepo = new TeacherArticleRepository;
 

@@ -57,18 +57,19 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <strong><i class="fas fa-phone mr-1"></i> 校內分機</strong>
-                    
+
                     <br>
                     <div class="row" style="margin-top: 0.5em;">
                         <div class="col-md-9">
                             <div class="input-group">
-                                
+
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">#</span>
                                 </div>
-                                <input class="form-control" type="text" placeholder="" id="teacher_phone" value="{{ $basic_info->where('type','=','phone')->first()->value }}">
+                                <input class="form-control" type="text" placeholder="" id="teacher_phone"
+                                    value="{{ $basic_info->where('type','=','phone')->first()->value }}">
                             </div>
-                            
+
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-outline-primary " id="teacher_phone_btn">更新</button>
@@ -82,9 +83,11 @@
                         <div class="col-md-9">
                             <div class="input-group">
 
-                                <input class="form-control" type="text" placeholder="" value="{{ $basic_info->where('type','=','office')->first()->value }}" id="teacher_office">
+                                <input class="form-control" type="text" placeholder=""
+                                    value="{{ $basic_info->where('type','=','office')->first()->value }}"
+                                    id="teacher_office">
                             </div>
-                            
+
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-outline-primary " id="teacher_office_btn">更新</button>
@@ -99,9 +102,11 @@
                         <div class="col-md-9">
                             <div class="input-group">
 
-                                <input class="form-control" type="text" placeholder="" value="{{ $basic_info->where('type','=','email')->first()->value }}" id="teacher_email">
+                                <input class="form-control" type="text" placeholder=""
+                                    value="{{ $basic_info->where('type','=','email')->first()->value }}"
+                                    id="teacher_email">
                             </div>
-                            
+
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-outline-primary " id="teacher_email_btn">更新</button>
@@ -109,12 +114,12 @@
                     </div>
 
                     <hr>
-                    
+
                     <strong><i class="fas fa-pencil-alt mr-1"></i> 專長</strong> &nbsp;&nbsp;
                     <button class="btn btn-outline-primary btn-sm" id="add_teacher_skill_item_btn">新增專長</button>
                     <button class="btn btn-outline-success btn-sm" id="update_teacher_skill_btn">更新</button>
 
-                    <div class="row"  style="margin-top: 0.5em;">
+                    <div class="row" style="margin-top: 0.5em;">
                         <div class="col-md-10">
                             <table class="table table-bordered">
                                 <thead>
@@ -129,14 +134,14 @@
                             </table>
                         </div>
                     </div>
-                    
+
 
                     <hr>
                     <strong><i class="fas fa-book mr-1"></i> 學歷</strong> &nbsp;&nbsp;
                     <button class="btn btn-outline-primary btn-sm" id="add_teacher_education_item_btn">新增學歷</button>
                     <button class="btn btn-outline-success btn-sm" id="update_teacher_education_btn">更新</button>
 
-                    <div class="row"  style="margin-top: 0.5em;">
+                    <div class="row" style="margin-top: 0.5em;">
                         <div class="col-md-10">
                             <table class="table table-bordered">
                                 <thead>
@@ -153,7 +158,7 @@
                             </table>
                         </div>
                     </div>
-                    
+
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -163,8 +168,9 @@
         <div class="col-md-12">
             <div class="card card-primary collapsed-card">
                 <div class="card-header">
-                    <h3 class="card-title">計數器 <span class="badge badge-pill badge-warning">{{ $counter->count() }}</span></h3>
-                    
+                    <h3 class="card-title">計數器 <span
+                            class="badge badge-pill badge-warning">{{ $counter->count() }}</span></h3>
+
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                             title="Collapse">
@@ -201,7 +207,8 @@
         <div class="col-md-12">
             <div class="card card-primary collapsed-card">
                 <div class="card-header">
-                    <h3 class="card-title">經歷 <span class="badge badge-pill badge-warning">{{ $experiences->count() }}</span></h3>
+                    <h3 class="card-title">經歷 <span
+                            class="badge badge-pill badge-warning">{{ $experiences->count() }}</span></h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -252,19 +259,20 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#modal-article-create">新增期刊論文</button><br>
-                    <table class="table table-bordered" style="margin-top: 0.7em;"> 
+                    <table class="table table-bordered" style="margin-top: 0.7em;">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>作者 Authors</th>
                                 <th>標題 Title</th>
                                 <th>出處 Journal</th>
-                                <th>發表時間 Time</th>
-                                <th>索引 Citation Index</th>
+                                <th width="8%">發表時間 Time</th>
+                                <th width="8%">索引 Citation Index</th>
+                                <th width="12%">操作</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            {!! $TeacherPresenter->setArticle($articles) !!}
                         </tbody>
                     </table>
                 </div>
@@ -290,7 +298,7 @@
                 </div>
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#modal-experience-create">新增科技部計畫</button><br>
+                        data-target="#modal-most-create">新增科技部計畫</button><br>
                     <table class="table table-bordered" style="margin-top: 0.7em;">
                         <thead>
                             <tr>
@@ -300,10 +308,11 @@
                                 <th>計畫日期(迄) End Date</th>
                                 <th>計畫編號 Project Number</th>
                                 <th>擔任工作 Job</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            {!! $TeacherPresenter->setMostProject($most_projects) !!}
                         </tbody>
                     </table>
                 </div>
@@ -331,7 +340,7 @@
                 </div>
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#modal-experience-create">新增期刊論文</button><br>
+                        data-target="#modal-proceeding-create">新增期刊論文</button><br>
                     <table class="table table-bordered" style="margin-top: 0.7em;">
                         <thead>
                             <tr>
@@ -384,7 +393,7 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            {!! $TeacherPresenter->setArticle($proceedings) !!}
                         </tbody>
                     </table>
                 </div>
@@ -519,6 +528,116 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+    <!-- create Article -->
+    <!-- 作者 Authors
+         標題 Title
+         出處 Journal
+         發表時間 Time
+         索引 Citation Index -->
+    <div class="modal fade" id="modal-most-create">
+        <div class="modal-dialog">
+            <form action="/admin/teacher/createmost" method="POST">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">新增科技部計畫</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="name" placeholder="計畫名稱">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="start_date" placeholder="計畫日期(起)">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="end_date" placeholder="計畫日期(止)">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="project_number" placeholder="計畫編號">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="job" placeholder="擔任工作">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+            </form>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- create Proceeding -->
+    <!-- 作者 Authors
+         標題 Title
+         出處 Journal
+         發表時間 Time
+         索引 Citation Index -->
+    <div class="modal fade" id="modal-proceeding-create">
+        <div class="modal-dialog">
+            <form action="/admin/teacher/createproceeding" method="POST">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">新增期刊論文</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="author" placeholder="作者(們)">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="title" placeholder="標題">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="journal" placeholder="會議名稱">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="time" placeholder="發表時間">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="citation_index" placeholder="索引">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+            </form>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 
     <div class="modal fade" id="modal-experience-modify">
         <div class="modal-dialog">
@@ -565,7 +684,7 @@
 <script>
     alert('成功');
 
-    
+
 </script>
 @endif
 

@@ -18,6 +18,14 @@ class TeacherArticleRepository {
         return TeacherArticle::all();
     }
 
+    public function readArticle(){
+        return TeacherArticle::where('type','=',1)->get();
+    }
+
+    public function readProceeding(){
+        return TeacherArticle::where('type','=',2)->get();
+    }
+
     public function modify($id,$authors,$title,$journal_or_conference,$time,$citation_index){
         TeacherArticle::where('id','=',$id)->update([
             'authors'=>$authors,

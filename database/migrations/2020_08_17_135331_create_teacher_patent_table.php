@@ -18,8 +18,8 @@ class CreateTeacherPatentTable extends Migration
             $table->string('name');
             $table->string('category');
             $table->string('patent_number')->nullable();
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->string('start_date');
+            $table->string('end_date');
             $table->timestamps();
         });
     }
